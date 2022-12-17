@@ -35,6 +35,7 @@ export default function User({ props, handleUserClick }) {
       </h1>
       <p>Risk Profile: {props.riskProfile}</p>
       <p>Net Worth: {netWorth}</p>
+      
 
       {props.portfolios.map((portfolio) => {
         return (
@@ -50,7 +51,7 @@ export default function User({ props, handleUserClick }) {
 
       {props.portfolios.map((portfolio) => {
         return (
-          <p key={portfolio.portfolioId + " portStatus"}>
+          <p key={portfolio.portfolioId + " portfolioStatus"}>
             {portfolio.portfolioId} : {portfolio.restrictionStatus}
           </p>
         );

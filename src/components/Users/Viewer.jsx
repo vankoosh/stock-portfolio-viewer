@@ -1,5 +1,5 @@
 import User from "../User/User";
-import Portfolio from "../Portfolio/Portfolio";
+import Portfolios from "../Portfolios/Portfolios";
 import "./Viewer.css";
 import { useState } from "react";
 import userListJson from "../../data.json";
@@ -24,7 +24,7 @@ export default function Viewer() {
   // });
 
   return (
-    <>
+    <div className="container">
       <main className="users-sort">
         <form action="/">
           <input
@@ -75,16 +75,18 @@ export default function Viewer() {
               props={user}
               key={user.clientId}
               handleUserClick={handleUserClick}
-              id={user.clientId}
             />
           );
         })}
       </main>
+
       <aside>
-        {selectedUser.portfolios.map((portfolio) => {
-          return <Portfolio props={portfolio} />;
-        })}        
+        <h1>CUSTOMER PORTFOLIOS:</h1>
+        <Portfolios props={selectedUser} />
       </aside>
-    </>
+      <aside>
+
+      </aside>
+    </div>
   );
 }

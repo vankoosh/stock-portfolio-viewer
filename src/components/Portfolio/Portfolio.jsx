@@ -1,10 +1,10 @@
+import "./Portfolio.css";
 
-export default function Portfolios({ props }) {
+export default function Portfolio({ props }) {
   return (
     <div className="portfolio">
-      <h1>Portfolio Name</h1>
-      <h2>{props.portfolioName}</h2>
-      <p>{props.restrictionStatus}</p>
+      <h2>Portfolio Name: {props.portfolioName}</h2>
+      <p>Restriction Status: {props.restrictionStatus}</p>
     </div>
   );
 }
