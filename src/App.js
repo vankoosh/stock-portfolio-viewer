@@ -1,10 +1,10 @@
 import './App.css';
-import User from './components/Users/Users';
+import Viewer from './components/Users/Viewer';
 
 function App() {
   return (
     <div className="App">
-      <User />
+      <Viewer />
     </div>
   );
 }

@@ -1,0 +1,4 @@
+.users-sort{
+  display: grid;
+  grid-template-columns: 1fr;
+}
