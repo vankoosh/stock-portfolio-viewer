@@ -1,11 +1,11 @@
 import "./Portfolio.css";
 
-export default function Portfolio({ props, handlePortfolioClick }) {
+export default function Portfolio({ props, setSelectedPortfolio }) {
   return (
     <div
       className="portfolio"
       onClick={() => {
-        handlePortfolioClick(props.portfolioId);
+        setSelectedPortfolio(props);
       }}
     >
       <h2>Portfolio Name: {props.portfolioName}</h2>

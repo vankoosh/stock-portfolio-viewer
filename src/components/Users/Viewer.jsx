@@ -3,6 +3,7 @@ import Portfolios from "../Portfolios/Portfolios";
 import "./Viewer.css";
 import { useState } from "react";
 import userListJson from "../../data.json";
+import Assets from "../Assets/Assets";
 
 export default function Viewer() {
   const res = JSON.stringify(userListJson);
@@ -10,6 +11,8 @@ export default function Viewer() {
 
   const [selectedRadioBtn, setSelectedRadioBtn] = useState("name");
   const [selectedUser, setSelectedUser] = useState();
+  const [selectedPortfolio, setSelectedPortfolio] = useState();
+
 
   const handleRadioClick = (e) => {
     setSelectedRadioBtn(e.currentTarget.value);
@@ -19,12 +22,17 @@ export default function Viewer() {
     setSelectedUser(selectedUser);
   };
 
+  // const handlePortfolioClick = (selectedPortfolio) => {
+  //   setSelectedPortfolio(selectedPortfolio);
+  //   console.log(selectedPortfolio)
+  // };
+
   // const selectedUserJson = arr.find((customer) => {
   //   return customer.clientId === selectedUser;
   // });
 
   return (
-    <div className="container">
+    <div className="users-container">
       <main className="users-sort">
         <form action="/">
           <input
@@ -80,12 +88,15 @@ export default function Viewer() {
         })}
       </main>
 
-      <aside>
+      <aside className="portfolios-container">
         <h1>CUSTOMER PORTFOLIOS:</h1>
-        <Portfolios props={selectedUser} />
+        <Portfolios
+          props={selectedUser}
+          setSelectedPortfolio={setSelectedPortfolio}
+        />
       </aside>
       <aside>
-
+        <Assets props={selectedPortfolio} />        
       </aside>
     </div>
   );
