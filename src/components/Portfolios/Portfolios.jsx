@@ -2,6 +2,8 @@ import Portfolio from "../Portfolio/Portfolio";
 import "./Portfolios.css";
 
 export default function Portfolios({ props, setSelectedPortfolio }) {
+  
+
   if (props) {
     return props.portfolios.map((portfolio) => {
       return (

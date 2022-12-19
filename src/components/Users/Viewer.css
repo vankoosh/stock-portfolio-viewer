@@ -1,4 +1,4 @@
-.users-container{
+.viewer-container{
   display: grid;
   grid-template-columns: 1fr 20vw 1fr;
   place-items: center;

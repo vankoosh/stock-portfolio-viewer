@@ -8,11 +8,16 @@ import Assets from "../Assets/Assets";
 export default function Viewer() {
   const res = JSON.stringify(userListJson);
   const arr = JSON.parse(res);
-  const aggRestrStatusArray = arrRestrictionAggregator(arr);
-  console.log(aggRestrStatusArray);
+  const aggregatedArray = aggregatedArr(arr);
 
-  function arrRestrictionAggregator(arr) {
-    const newArr = arr.map((user) => {
+  const [selectedRadioBtn_User, setSelectedRadioBtn_User] = useState("name");
+  const [selectedRadioBtn_Portfolio, setSelectedRadioBtn_Portfolio] =
+    useState("name");
+  const [selectedUser, setSelectedUser] = useState();
+  const [selectedPortfolio, setSelectedPortfolio] = useState();
+
+  function aggregatedArr(arr) {
+    const arrWithRestriction = arr.map((user) => {
       if (
         user.portfolios.some(
           (status) => status.restrictionStatus === "breached"
@@ -29,67 +34,71 @@ export default function Viewer() {
         };
       }
     });
+
     //end of aggregated restriction status logic
-    const anotherNewArr = newArr.map((user) => {
+    const arrWithRestrictionAndWorth = arrWithRestriction.map((user) => {
       let tempNetWorth = 0;
+
       user.portfolios.forEach((portfolio) => {
         portfolio.assets.forEach((asset) => {
-          console.log(tempNetWorth)
           tempNetWorth += asset.quantity * asset.valuePerAsset;
         });
-        return {
-          netWorth: tempNetWorth,
-          ...user
-        }
       });
-    })
-    
-
-    return anotherNewArr;
+      return {
+        aggNetWorth: tempNetWorth,
+        ...user,
+      };
+    });
+    //end of net worth logic
+    const arrWithRestrictionWorthAndGain = arrWithRestrictionAndWorth.map(
+      (user) => {
+        let tempCapGain = 0;
+        user.portfolios.forEach((portfolio) => {
+          portfolio.assets.forEach((asset) => {
+            tempCapGain += asset.quantity * (asset.capitalGainPerAsset * 1);
+          });
+        });
+        return {
+          aggCapGain: tempCapGain,
+          ...user,
+        };
+      }
+    );
+    //end of cap gain logic
+    return arrWithRestrictionWorthAndGain;
   }
 
-
-  const compareUsers = (p1, p2) => {
+  function compareUsers(p1, p2) {
     switch (selectedRadioBtn_User) {
       case "name":
-        p1.firstName > p2.firstName ? 1 : -1;
-        break;
+        return p1.firstName > p2.firstName ? 1 : -1;
       case "risk":
-        p1.riskProfile > p2.riskProfile ? 1 : -1;
-        break;
+        return p1.riskProfile > p2.riskProfile ? 1 : -1;
       case "worth":
-        p1.riskProfile > p2.riskProfile ? 1 : -1;
-        break;
+        return p1.aggNetWorth > p2.aggNetWorth ? 1 : -1;
       case "restriction":
-        p1.riskProfile > p2.riskProfile ? 1 : -1;
-        break;
+        return p1.aggRestrictionStatus > p2.aggRestrictionStatus ? 1 : -1;
       case "gain":
-        p1.riskProfile > p2.riskProfile ? 1 : -1;
-        break;
+        return p1.aggNetGain > p2.aggNetGain ? 1 : -1;
       default:
-      // code block
+        console.log("no comparison ran");
     }
-  };
+  }
 
-  const [selectedRadioBtn_User, setSelectedRadioBtn_User] = useState("name");
-  const [selectedRadioBtn_Portfolio, setSelectedRadioBtn_Portfolio] =
-    useState("name");
-  const [selectedUser, setSelectedUser] = useState();
-  const [selectedPortfolio, setSelectedPortfolio] = useState();
-
-  const handleRadioClick_User = (e) => {
+  function handleRadioClick_User(e) {
     setSelectedRadioBtn_User(e.currentTarget.value);
-  };
-  const handleRadioClick_Portfolio = (e) => {
-    setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-  };
+  }
 
-  const handleUserClick = (selectedUser) => {
+  function handleRadioClick_Portfolio(e) {
+    setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+  }
+
+  function handleUserClick(selectedUser) {
     setSelectedUser(selectedUser);
-  };
+  }
 
   return (
-    <div className="users-container">
+    <div className="viewer-container">
       <main className="users-sort">
         <form action="/">
           <input
@@ -134,7 +143,7 @@ export default function Viewer() {
           Capital Gain
         </form>
 
-        {arr.sort(compareUsers).map((user) => {
+        {aggregatedArray.sort(compareUsers).map((user) => {
           return (
             <User
               props={user}
@@ -152,7 +161,7 @@ export default function Viewer() {
           setSelectedPortfolio={setSelectedPortfolio}
         />
       </aside>
-      <aside>
+      <aside className="assets-container">
         <form action="/">
           <input
             type="radio"
@@ -195,7 +204,7 @@ export default function Viewer() {
             }
             onChange={handleRadioClick_Portfolio}
           />
-          Capital Gain
+          Total Value
           <input
             type="radio"
             name="sort"
@@ -216,7 +225,10 @@ export default function Viewer() {
           Associated Risk
         </form>
         <h1>CUSTOMER ASSETS:</h1>
-        <Assets props={selectedPortfolio} />
+        <Assets
+          props={selectedPortfolio}
+          selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
+        />
       </aside>
     </div>
   );
