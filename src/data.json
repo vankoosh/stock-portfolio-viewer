@@ -7,7 +7,7 @@
     "riskProfile": 3,
     "residence": "Switzerland",
     "currency": "CHF",
-    "clientType": "retail",
+    "clientType": "retail",    
     "portfolios": [
       {
         "portfolioId": "cli18874_por1",

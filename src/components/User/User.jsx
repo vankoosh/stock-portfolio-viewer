@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "./User.css";
 
 export default function User({ props, handleUserClick }) {
-  
   const [netWorth, setNetWorth] = useState(0);
   const [capGain, setCapGain] = useState(0);
 
@@ -10,10 +9,10 @@ export default function User({ props, handleUserClick }) {
     let tempNetWorth = 0;
     props.portfolios.forEach((portfolio) => {
       portfolio.assets.forEach((asset) => {
-        tempNetWorth += asset.quantity * asset.valuePerAsset
+        tempNetWorth += asset.quantity * asset.valuePerAsset;
       });
     });
-    setNetWorth(tempNetWorth)
+    setNetWorth(tempNetWorth);
   }, [props.portfolios]);
 
   useEffect(() => {
@@ -26,16 +25,18 @@ export default function User({ props, handleUserClick }) {
     setCapGain(tempCapGain);
   }, [props.portfolios]);
 
-
-
   return (
-    <div className="user" onClick={()=>{handleUserClick(props)}}>
+    <div
+      className="user"
+      onClick={() => {
+        handleUserClick(props);
+      }}
+    >
       <h1>
         {props.firstName} {props.lastName}
       </h1>
       <p>Risk Profile: {props.riskProfile}</p>
       <p>Net Worth: {netWorth}</p>
-      
 
       {props.portfolios.map((portfolio) => {
         return (
@@ -45,9 +46,7 @@ export default function User({ props, handleUserClick }) {
         );
       })}
 
-      <p>
-        Restriction Statuses:<br></br>
-      </p>
+      <p>Restriction Statuses:</p>
 
       {props.portfolios.map((portfolio) => {
         return (

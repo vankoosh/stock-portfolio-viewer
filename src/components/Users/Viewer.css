@@ -1,6 +1,7 @@
 .users-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 20vw 1fr;
+  place-items: center;
 }
 
 .users-sort{

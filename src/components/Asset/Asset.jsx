@@ -1,15 +1,19 @@
+import "./Asset.css";
 
 export default function Asset({ props }) {
-  return (    
-    console.log(props)
-    // <div>
-    //   <p>Asset Name: {props.assetName}</p>
-    //   <p>Asset Type: {props.assetType}</p>
-    //   <p>Asset Location: {props.location}</p>
-    //   <p>Asset Quantity: {props.quantity}</p>
-    //   <p>Total Value: (quantity * valuePerAsset) + asset capital gain</p>
-    //   <p>Capital Gain: quantity * capitalGainPerAsset</p>
-    //   <p>Associated Risk: quantity * associatedRiskPerAsset</p>
-    // </div>
+  return (
+    <div className="asset">
+      <p>Asset Name: {props.assetName}</p>
+      <p>Asset Type: {props.assetType}</p>
+      <p>Asset Location: {props.location}</p>
+      <p>Asset Quantity: {props.quantity}</p>
+      <p>
+        Total Value:
+        {props.quantity * props.valuePerAsset +
+          props.quantity * props.capitalGainPerAsset}
+      </p>
+      <p>Capital Gain: {props.quantity * props.capitalGainPerAsset}</p>
+      <p>Associated Risk: {props.quantity * props.associatedRiskPerAsset}</p>
+    </div>
   );
 }
