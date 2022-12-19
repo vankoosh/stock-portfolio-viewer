@@ -1,6 +1,6 @@
 import "./Asset.css";
 
-export default function Asset({ props }) {
+export default function Asset( props ) {
   return (
     <div className="asset">
       <p>Asset Name: {props.assetName}</p>

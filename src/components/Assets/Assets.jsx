@@ -1,4 +1,3 @@
-import React from "react";
 import Asset from "../Asset/Asset";
 
 export default function Assets({ props, selectedRadioBtn_Portfolio }) {
@@ -32,10 +31,9 @@ export default function Assets({ props, selectedRadioBtn_Portfolio }) {
     }
   }
 
-
   if (props) {
     return props.assets.sort(comparePortfolios).map((asset) => {
-      return <Asset props={asset} key={asset.isin} />;
+      return <Asset props={asset} key={asset.isin}/> ;
     });
   } else {
     return <p>Please choose a portfolio...</p>;

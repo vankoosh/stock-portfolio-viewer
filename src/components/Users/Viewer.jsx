@@ -1,9 +1,9 @@
+import React, { useState } from "react";
 import User from "../User/User";
 import Portfolios from "../Portfolios/Portfolios";
-import "./Viewer.css";
-import { useState } from "react";
-import userListJson from "../../data.json";
 import Assets from "../Assets/Assets";
+import userListJson from "../../data.json";
+import "./Viewer.css";
 
 export default function Viewer() {
   const res = JSON.stringify(userListJson);
@@ -100,7 +100,7 @@ export default function Viewer() {
   return (
     <div className="viewer-container">
       <main className="users-sort">
-        <form action="/">
+        <form action="#">
           <input
             type="radio"
             name="sort"
