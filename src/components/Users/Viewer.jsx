@@ -98,9 +98,9 @@ export default function Viewer() {
   }
 
   return (
-    <div className="flex justify-between font-oswald container mx-auto h-screen bg-slate-300">
+    <div className="flex justify-between font-oswald container mx-auto h-screen">
       <main className="h-screen">
-        <form action="#">
+        <form action="/">
           <input
             type="radio"
             name="sort"
@@ -159,15 +159,15 @@ export default function Viewer() {
         </div>
       </main>
 
-      <aside className="">
-        <h1>CUSTOMER PORTFOLIOS:</h1>
+      <aside className="my-auto">
+        <h1 className="text-2xl text-center">CUSTOMER PORTFOLIOS:</h1>
         <Portfolios
           props={selectedUser}
           setSelectedPortfolio={setSelectedPortfolio}
         />
       </aside>
-      <aside className="assets-container">
-        <form action="/">
+      <aside className="pt-4 outline-0 overflow-auto h-vh w-[30vw]">
+        <form action="/" className="fixed top-0 bg-[#f8f9fa] w-auto h-8">
           <input
             type="radio"
             name="sort"
@@ -177,6 +177,7 @@ export default function Viewer() {
           />
           Name
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="type"
@@ -185,6 +186,7 @@ export default function Viewer() {
           />
           Portfolio Type
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="location"
@@ -193,6 +195,7 @@ export default function Viewer() {
           />
           Location
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="quantity"
@@ -201,6 +204,7 @@ export default function Viewer() {
           />
           Quantity
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="total value"
@@ -211,6 +215,7 @@ export default function Viewer() {
           />
           Total Value
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="capital gain"
@@ -221,6 +226,7 @@ export default function Viewer() {
           />
           Capital Gain
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="risk"
@@ -229,8 +235,11 @@ export default function Viewer() {
           />
           Associated Risk
         </form>
-        <h1>CUSTOMER ASSETS:</h1>
+        <h1 className="text-2xl text-center fixed mt-4 bg-[#f8f9fa] w-[30vw] ">
+          CUSTOMER ASSETS:
+        </h1>
         <Assets
+          className="mt-16"
           props={selectedPortfolio}
           selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
         />
