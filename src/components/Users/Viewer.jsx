@@ -100,7 +100,7 @@ export default function Viewer() {
   return (
     <div className="flex justify-between font-oswald container mx-auto h-screen bg-slate-300">
       <main className="h-screen">
-        <form action="#" className="">
+        <form action="#">
           <input
             type="radio"
             name="sort"
