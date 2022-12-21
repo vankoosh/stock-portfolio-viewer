@@ -3,7 +3,7 @@ import "./User.css";
 export default function User({ props, handleUserClick }) {
   return (
     <div
-      className="user"
+      className="p-2"
       onClick={() => {
         handleUserClick(props);
       }}

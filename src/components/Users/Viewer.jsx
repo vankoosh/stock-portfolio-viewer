@@ -98,9 +98,9 @@ export default function Viewer() {
   }
 
   return (
-    <div className="viewer-container">
-      <main className="users-sort">
-        <form action="#">
+    <div className="flex justify-between font-oswald container mx-auto h-screen bg-slate-300">
+      <main className="h-screen">
+        <form action="#" className="">
           <input
             type="radio"
             name="sort"
@@ -110,6 +110,7 @@ export default function Viewer() {
           />
           Name
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="risk"
@@ -118,6 +119,7 @@ export default function Viewer() {
           />
           Risk Profile
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="worth"
@@ -126,6 +128,7 @@ export default function Viewer() {
           />
           Net Worth
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="restriction"
@@ -134,6 +137,7 @@ export default function Viewer() {
           />
           Restriction Status
           <input
+            className="ml-2"
             type="radio"
             name="sort"
             value="gain"
@@ -142,19 +146,20 @@ export default function Viewer() {
           />
           Capital Gain
         </form>
-
-        {aggregatedArray.sort(compareUsers).map((user) => {
-          return (
-            <User
-              props={user}
-              key={user.clientId}
-              handleUserClick={handleUserClick}
-            />
-          );
-        })}
+        <div className="flex-col">
+          {aggregatedArray.sort(compareUsers).map((user) => {
+            return (
+              <User
+                props={user}
+                key={user.clientId}
+                handleUserClick={handleUserClick}
+              />
+            );
+          })}
+        </div>
       </main>
 
-      <aside className="portfolios-container">
+      <aside className="">
         <h1>CUSTOMER PORTFOLIOS:</h1>
         <Portfolios
           props={selectedUser}
