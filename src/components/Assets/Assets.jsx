@@ -35,6 +35,6 @@ export default function Assets({ props, selectedRadioBtn_Portfolio }) {
       return <Asset props={asset} key={asset.isin} />;
     }))
   } else {
-    return <p>Please choose a portfolio...</p>;
+    return <p className="w-fit mx-auto mt-[40vh]">...then select a portfolio.</p>;
   }
 }

@@ -2,9 +2,10 @@
 
 export default function Asset({ props }) {
   return (
-    <div className="asset p-2 py-4 bg-[#014885] rounded-lg w-[20vw] px-8 my-4 text-white mx-auto">
-      <p className="text-xl">
-        Asset Name:<span className="ml-4 text-black text-xl"> {props.assetName}</span>
+    <div className="asset p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 text-white mx-auto">
+      <p className="text-xl ">
+        Asset Name:
+        <span className="ml-4 text-black text-xl"> {props.assetName}</span>
       </p>
       <p>
         Asset Type: <span className="ml-4">{props.assetType}</span>

@@ -1,12 +1,20 @@
 // import "./User.css";
+import{useState, useEffect} from "react"
 
-export default function User({ props, handleUserClick }) {
+export default function User({ props, setSelectedUser, setActiveUser, activeUser }) {
 
   return (
     <div
-      className="p-2 py-4 bg-[#014885] rounded-lg w-[20vw] hover:cursor-pointer px-8 my-4 hover:bg-green-800 active:bg-green-800"
-      onClick={() => {
-        handleUserClick(props);
+      id={props.clientId}
+      className={
+        activeUser && activeUser === props.clientId
+          ? "p-2 py-4 rounded-lg w-[20vw] bg-green-800 hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
+          : "p-2 py-4 rounded-lg w-[20vw] bg-[#014885] hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
+      }
+      // className="p-2 py-4 rounded-lg w-[20vw] bg-[#014885] hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
+      onClick={(e) => {
+        setSelectedUser(props);
+        setActiveUser(e.currentTarget.id)
       }}
     >
       <h1 className="text-2xl">
@@ -30,7 +38,15 @@ export default function User({ props, handleUserClick }) {
 
       <p className="text-white">
         Restriction Status:
-        <span className={props.aggRestrictionStatus === "breached"? "ml-4 text-red-900":"ml-4 text-white"}>{props.aggRestrictionStatus}</span>
+        <span
+          className={
+            props.aggRestrictionStatus === "breached"
+              ? "ml-4 text-red-900"
+              : "ml-4 text-white"
+          }
+        >
+          {props.aggRestrictionStatus}
+        </span>
       </p>
       <p className="text-white">
         Aggregated Cap. Gain:<span className="ml-4">{props.aggCapGain}</span>

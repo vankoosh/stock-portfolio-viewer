@@ -15,6 +15,7 @@ export default function Viewer() {
     useState("name");
   const [selectedUser, setSelectedUser] = useState();
   const [selectedPortfolio, setSelectedPortfolio] = useState();
+  const [activeUser, setActiveUser] = useState();
 
   function aggregatedArr(arr) {
     const arrWithRestriction = arr.map((user) => {
@@ -93,14 +94,13 @@ export default function Viewer() {
     setSelectedRadioBtn_Portfolio(e.currentTarget.value);
   }
 
-  function handleUserClick(selectedUser) {
-    setSelectedUser(selectedUser);
-  }
-
   return (
-    <div className="flex justify-between font-oswald container mx-auto h-screen">
-      <main className="h-screen">
-        <form action="/">
+    <div className="flex justify-between font-oswald w-screen h-screen">
+      <main className="h-screen w-[33vw]">
+        <form
+          action="/"
+          className="fixed top-0 bg-[#caced3] w-auto left-[5vw] mx-auto h-8"
+        >
           <input
             type="radio"
             name="sort"
@@ -108,7 +108,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_User === "name" ? true : false}
             onChange={handleRadioClick_User}
           />
-          Name
+          &nbsp;Name
           <input
             className="ml-2"
             type="radio"
@@ -117,7 +117,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_User === "risk" ? true : false}
             onChange={handleRadioClick_User}
           />
-          Risk Profile
+          &nbsp;Risk Profile
           <input
             className="ml-2"
             type="radio"
@@ -126,7 +126,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_User === "worth" ? true : false}
             onChange={handleRadioClick_User}
           />
-          Net Worth
+          &nbsp;Net Worth
           <input
             className="ml-2"
             type="radio"
@@ -135,7 +135,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_User === "restriction" ? true : false}
             onChange={handleRadioClick_User}
           />
-          Restriction Status
+          &nbsp;Restriction Status
           <input
             className="ml-2"
             type="radio"
@@ -144,30 +144,37 @@ export default function Viewer() {
             checked={selectedRadioBtn_User === "gain" ? true : false}
             onChange={handleRadioClick_User}
           />
-          Capital Gain
+          &nbsp;Capital Gain
         </form>
-        <div className="flex-col">
+        <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[33vw] ">
+          CUSTOMERS:
+        </h1>
+        <div className="flex-col h-[90vh] mt-20 overflow-auto">
           {aggregatedArray.sort(compareUsers).map((user) => {
             return (
               <User
                 props={user}
                 key={user.clientId}
-                handleUserClick={handleUserClick}
+                setSelectedUser={setSelectedUser}
+                setActiveUser={setActiveUser}
+                activeUser={activeUser}
               />
             );
           })}
         </div>
       </main>
 
-      <aside className="my-auto">
+      <aside className="h-screen pt-10 w-[33vw]">
         <h1 className="text-2xl text-center">CUSTOMER PORTFOLIOS:</h1>
-        <Portfolios
-          props={selectedUser}
-          setSelectedPortfolio={setSelectedPortfolio}
-        />
+        <div className="h-[50vh] mt-20">
+          <Portfolios
+            props={selectedUser}
+            setSelectedPortfolio={setSelectedPortfolio}
+          />
+        </div>
       </aside>
-      <aside className="pt-4 outline-0 overflow-auto h-vh w-[30vw]">
-        <form action="/" className="fixed top-0 bg-[#f8f9fa] w-auto h-8">
+      <aside className="h-screen w-[33vw]">
+        <form action="/" className="fixed top-0 bg-[#caced3] w-auto h-12">
           <input
             type="radio"
             name="sort"
@@ -175,7 +182,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_Portfolio === "name" ? true : false}
             onChange={handleRadioClick_Portfolio}
           />
-          Name
+          &nbsp;Name
           <input
             className="ml-2"
             type="radio"
@@ -184,7 +191,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_Portfolio === "type" ? true : false}
             onChange={handleRadioClick_Portfolio}
           />
-          Portfolio Type
+          &nbsp;Portfolio Type
           <input
             className="ml-2"
             type="radio"
@@ -193,7 +200,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_Portfolio === "location" ? true : false}
             onChange={handleRadioClick_Portfolio}
           />
-          Location
+          &nbsp;Location
           <input
             className="ml-2"
             type="radio"
@@ -202,7 +209,7 @@ export default function Viewer() {
             checked={selectedRadioBtn_Portfolio === "quantity" ? true : false}
             onChange={handleRadioClick_Portfolio}
           />
-          Quantity
+          &nbsp;Quantity
           <input
             className="ml-2"
             type="radio"
@@ -213,7 +220,7 @@ export default function Viewer() {
             }
             onChange={handleRadioClick_Portfolio}
           />
-          Total Value
+          &nbsp;Total Value
           <input
             className="ml-2"
             type="radio"
@@ -224,7 +231,7 @@ export default function Viewer() {
             }
             onChange={handleRadioClick_Portfolio}
           />
-          Capital Gain
+          &nbsp;Capital Gain
           <input
             className="ml-2"
             type="radio"
@@ -233,16 +240,17 @@ export default function Viewer() {
             checked={selectedRadioBtn_Portfolio === "risk" ? true : false}
             onChange={handleRadioClick_Portfolio}
           />
-          Associated Risk
+          &nbsp;Ass. Risk
         </form>
-        <h1 className="text-2xl text-center fixed mt-4 bg-[#f8f9fa] w-[30vw] ">
+        <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[30vw] ">
           CUSTOMER ASSETS:
         </h1>
-        <Assets
-          className="mt-16"
-          props={selectedPortfolio}
-          selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
-        />
+        <div className="h-[90vh] mt-20 overflow-auto">
+          <Assets
+            props={selectedPortfolio}
+            selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
+          />
+        </div>
       </aside>
     </div>
   );

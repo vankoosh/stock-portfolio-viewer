@@ -1,11 +1,17 @@
 // import "./Portfolio.css";
 
-export default function Portfolio({ props, setSelectedPortfolio }) {
+export default function Portfolio({ props, setSelectedPortfolio, activePortfolio, setActivePortfolio }) {
   return (
     <div
-      className="p-2 py-4 bg-[#014885] rounded-lg text-white w-[20vw] hover:cursor-pointer px-8 my-4 hover:bg-[#014885]-200"
-      onClick={() => {
+      id={props.portfolioId}
+      className={
+        activePortfolio && activePortfolio === props.portfolioId
+        ?"p-2 py-4 bg-green-800 rounded-lg text-white hover:cursor-pointer w-[20vw] mx-auto px-8 my-4 hover:bg-green-800"
+        :"p-2 py-4 bg-[#014885] rounded-lg text-white hover:cursor-pointer w-[20vw] mx-auto px-8 my-4 hover:bg-green-800"
+      }
+      onClick={(e) => {
         setSelectedPortfolio(props);
+        setActivePortfolio(e.currentTarget.id)
       }}
     >
       <h2>
