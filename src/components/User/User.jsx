@@ -1,6 +1,3 @@
-// import "./User.css";
-import{useState, useEffect} from "react"
-
 export default function User({ props, setSelectedUser, setActiveUser, activeUser }) {
 
   return (
@@ -11,7 +8,6 @@ export default function User({ props, setSelectedUser, setActiveUser, activeUser
           ? "p-2 py-4 rounded-lg w-[20vw] bg-green-800 hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
           : "p-2 py-4 rounded-lg w-[20vw] bg-[#014885] hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
       }
-      // className="p-2 py-4 rounded-lg w-[20vw] bg-[#014885] hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
       onClick={(e) => {
         setSelectedUser(props);
         setActiveUser(e.currentTarget.id)

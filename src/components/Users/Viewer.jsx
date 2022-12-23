@@ -3,12 +3,11 @@ import User from "../User/User";
 import Portfolios from "../Portfolios/Portfolios";
 import Assets from "../Assets/Assets";
 import userListJson from "../../data.json";
-import "./Viewer.css";
 
 export default function Viewer() {
-  const res = JSON.stringify(userListJson);
-  const arr = JSON.parse(res);
-  const aggregatedArray = aggregatedArr(arr);
+  const aggregatedArray = aggregatedArr(
+    JSON.parse(JSON.stringify(userListJson))
+  );
 
   const [selectedRadioBtn_User, setSelectedRadioBtn_User] = useState("name");
   const [selectedRadioBtn_Portfolio, setSelectedRadioBtn_Portfolio] =

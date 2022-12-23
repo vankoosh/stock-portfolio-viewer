@@ -1,5 +1,3 @@
-// import "./Portfolio.css";
-
 export default function Portfolio({ props, setSelectedPortfolio, activePortfolio, setActivePortfolio }) {
   return (
     <div

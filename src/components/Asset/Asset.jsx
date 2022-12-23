@@ -1,5 +1,3 @@
-// import "./Asset.css";
-
 export default function Asset({ props }) {
   return (
     <div className="asset p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 text-white mx-auto">
@@ -24,13 +22,13 @@ export default function Asset({ props }) {
         </span>
       </p>
       <p>
-        Capital Gain:{" "}
+        Capital Gain:
         <span className="ml-4">
           {props.quantity * props.capitalGainPerAsset}
         </span>
       </p>
       <p>
-        Associated Risk:{" "}
+        Associated Risk:
         <span className="ml-4">
           {props.quantity * props.associatedRiskPerAsset}
         </span>
