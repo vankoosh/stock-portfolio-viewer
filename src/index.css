@@ -1,8 +1,0 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body{
-  background-color: #caced3;
-}
