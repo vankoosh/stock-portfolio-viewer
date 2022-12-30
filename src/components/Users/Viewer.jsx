@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import User from "../User/User";
 import Portfolios from "../Portfolios/Portfolios";
 import Assets from "../Assets/Assets";
@@ -85,13 +85,13 @@ export default function Viewer() {
     }
   }
 
-  function handleRadioClick_User(e) {
-    setSelectedRadioBtn_User(e.currentTarget.value);
-  }
+  // function handleRadioClick_User(e) {
+  //   setSelectedRadioBtn_User(e.currentTarget.value);
+  // }
 
-  function handleRadioClick_Portfolio(e) {
-    setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-  }
+  // function handleRadioClick_Portfolio(e) {
+  //   setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+  // }
 
   return (
     <div className="flex justify-between font-oswald w-screen h-screen">
@@ -105,7 +105,9 @@ export default function Viewer() {
             name="sort"
             value="name"
             checked={selectedRadioBtn_User === "name" ? true : false}
-            onChange={handleRadioClick_User}
+            onChange={(e) => {
+              setSelectedRadioBtn_User(e.currentTarget.value);
+            }}
           />
           &nbsp;Name
           <input
@@ -114,7 +116,9 @@ export default function Viewer() {
             name="sort"
             value="risk"
             checked={selectedRadioBtn_User === "risk" ? true : false}
-            onChange={handleRadioClick_User}
+            onChange={(e) => {
+              setSelectedRadioBtn_User(e.currentTarget.value);
+            }}
           />
           &nbsp;Risk Profile
           <input
@@ -123,7 +127,9 @@ export default function Viewer() {
             name="sort"
             value="worth"
             checked={selectedRadioBtn_User === "worth" ? true : false}
-            onChange={handleRadioClick_User}
+            onChange={(e) => {
+              setSelectedRadioBtn_User(e.currentTarget.value);
+            }}
           />
           &nbsp;Net Worth
           <input
@@ -132,7 +138,9 @@ export default function Viewer() {
             name="sort"
             value="restriction"
             checked={selectedRadioBtn_User === "restriction" ? true : false}
-            onChange={handleRadioClick_User}
+            onChange={(e) => {
+              setSelectedRadioBtn_User(e.currentTarget.value);
+            }}
           />
           &nbsp;Restriction Status
           <input
@@ -141,7 +149,9 @@ export default function Viewer() {
             name="sort"
             value="gain"
             checked={selectedRadioBtn_User === "gain" ? true : false}
-            onChange={handleRadioClick_User}
+            onChange={(e) => {
+              setSelectedRadioBtn_User(e.currentTarget.value);
+            }}
           />
           &nbsp;Capital Gain
         </form>
@@ -179,7 +189,9 @@ export default function Viewer() {
             name="sort"
             value="name"
             checked={selectedRadioBtn_Portfolio === "name" ? true : false}
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Name
           <input
@@ -188,7 +200,9 @@ export default function Viewer() {
             name="sort"
             value="type"
             checked={selectedRadioBtn_Portfolio === "type" ? true : false}
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Portfolio Type
           <input
@@ -197,7 +211,9 @@ export default function Viewer() {
             name="sort"
             value="location"
             checked={selectedRadioBtn_Portfolio === "location" ? true : false}
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Location
           <input
@@ -206,7 +222,9 @@ export default function Viewer() {
             name="sort"
             value="quantity"
             checked={selectedRadioBtn_Portfolio === "quantity" ? true : false}
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Quantity
           <input
@@ -217,7 +235,9 @@ export default function Viewer() {
             checked={
               selectedRadioBtn_Portfolio === "total value" ? true : false
             }
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Total Value
           <input
@@ -228,7 +248,9 @@ export default function Viewer() {
             checked={
               selectedRadioBtn_Portfolio === "capital gain" ? true : false
             }
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Capital Gain
           <input
@@ -237,7 +259,9 @@ export default function Viewer() {
             name="sort"
             value="risk"
             checked={selectedRadioBtn_Portfolio === "risk" ? true : false}
-            onChange={handleRadioClick_Portfolio}
+            onChange={(e) => {
+              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
+            }}
           />
           &nbsp;Ass. Risk
         </form>
