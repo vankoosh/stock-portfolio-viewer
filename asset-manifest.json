@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sq-mario-nano/static/css/main.798712c0.css",
-    "main.js": "/sq-mario-nano/static/js/main.7bd4c050.js",
+    "main.css": "/sq-mario-nano/static/css/main.42f4c7b6.css",
+    "main.js": "/sq-mario-nano/static/js/main.e115cf70.js",
     "index.html": "/sq-mario-nano/index.html",
-    "main.798712c0.css.map": "/sq-mario-nano/static/css/main.798712c0.css.map",
-    "main.7bd4c050.js.map": "/sq-mario-nano/static/js/main.7bd4c050.js.map"
+    "main.42f4c7b6.css.map": "/sq-mario-nano/static/css/main.42f4c7b6.css.map",
+    "main.e115cf70.js.map": "/sq-mario-nano/static/js/main.e115cf70.js.map"
   },
   "entrypoints": [
-    "static/css/main.798712c0.css",
-    "static/js/main.7bd4c050.js"
+    "static/css/main.42f4c7b6.css",
+    "static/js/main.e115cf70.js"
   ]
 }
