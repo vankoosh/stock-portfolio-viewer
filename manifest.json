@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Swiss Quant Portfolio Viewer",
+  "name": "Swiss Quant Portfolio Viewer",
   "icons": [],
   "start_url": ".",
   "display": "standalone",
