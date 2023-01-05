@@ -5,15 +5,14 @@ export default function Portfolio({ portfolio, setSelectedPortfolio, activePortf
 
   return (
     <div
-      id={portfolio.portfolioId}
       className={
         activePortfolio === portfolio.portfolioId
           ? `${portfolioStyle} bg-green-800 `
           : `${portfolioStyle} bg-[#014885] `
       }
-      onClick={(e) => {
+      onClick={() => {
         setSelectedPortfolio(portfolio);
-        setActivePortfolio(e.currentTarget.id);
+        setActivePortfolio(portfolio.portfolioId);
       }}
     >
       <h2>

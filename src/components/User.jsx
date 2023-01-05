@@ -9,15 +9,14 @@ export default function User({
 
   return (
     <div
-      id={user.clientId}
       className={
         activeUser === user.clientId
           ? `bg-green-800 ${userStyle}`
           : `bg-[#014885] ${userStyle}`
       }
-      onClick={(e) => {
+      onClick={() => {
         setSelectedUser(user);
-        setActiveUser(e.currentTarget.id);
+        setActiveUser(user.clientId);
       }}
     >
       <h1 className="text-2xl text-black">
@@ -30,6 +29,7 @@ export default function User({
         Net Worth: <span className="ml-4">{user.aggNetWorth}</span>
       </p>
 
+      {/*map in case of multiple user portfolios */}
       {user.portfolios.map((portfolio) => {
         return (
           <p key={portfolio.portfolioId}>

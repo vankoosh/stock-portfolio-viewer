@@ -18,6 +18,8 @@ function App() {
   const [activeUser, setActiveUser] = useState();
 
   function aggregatedArr(arr) {
+    
+    //STEP 1 - aggregate restriction statuses
     const arrWithRestriction = arr.map((user) => {
       if (
         user.portfolios.some(
@@ -36,13 +38,13 @@ function App() {
       }
     });
 
-    //end of aggregated restriction status logic
+    //STEP 2 - aggregate net worth
     const arrWithRestrictionAndWorth = arrWithRestriction.map((user) => {
       let tempNetWorth = 0;
 
-      user.portfolios.forEach((portfolio) => {
-        portfolio.assets.forEach((asset) => {
-          tempNetWorth += asset.quantity * asset.valuePerAsset;
+      user.portfolios.map((portfolio) => {
+        return portfolio.assets.map((asset) => {
+          return tempNetWorth += asset.quantity * asset.valuePerAsset;
         });
       });
       return {
@@ -50,13 +52,14 @@ function App() {
         ...user,
       };
     });
-    //end of net worth logic
+
+    //STEP 3 - aggregate net worth
     const arrWithRestrictionWorthAndGain = arrWithRestrictionAndWorth.map(
       (user) => {
         let tempCapGain = 0;
-        user.portfolios.forEach((portfolio) => {
-          portfolio.assets.forEach((asset) => {
-            tempCapGain += asset.quantity * (asset.capitalGainPerAsset * 1);
+        user.portfolios.map((portfolio) => {
+          return portfolio.assets.map((asset) => {
+            return tempCapGain += asset.quantity * (asset.capitalGainPerAsset * 1);
           });
         });
         return {
@@ -65,7 +68,7 @@ function App() {
         };
       }
     );
-    //end of cap gain logic
+    
     return arrWithRestrictionWorthAndGain;
   }
 
@@ -169,14 +172,13 @@ function App() {
       <aside className="h-screen pt-10 w-[33vw]">
         <h1 className="text-2xl text-center text-black">
           CUSTOMER PORTFOLIOS:
-        </h1>
-        <div className="h-[50vh] mt-20">
+        </h1>        
           <Portfolios
             selectedUser={selectedUser}
             setSelectedPortfolio={setSelectedPortfolio}
-          />
-        </div>
+          />       
       </aside>
+
       <aside className="h-screen w-[33vw]">
         <form
           action="/"
@@ -266,12 +268,10 @@ function App() {
         <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[30vw] text-black">
           CUSTOMER ASSETS:
         </h1>
-        <div className="h-[90vh] mt-20 overflow-auto">
           <Assets
             selectedPortfolio={selectedPortfolio}
             selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
           />
-        </div>
       </aside>
     </div>
   );

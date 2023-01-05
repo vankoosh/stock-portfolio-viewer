@@ -34,9 +34,13 @@ export default function Assets({
   }
 
   if (selectedPortfolio) {
-    return selectedPortfolio.assets.sort(comparePortfolios).map((asset) => {
-      return <Asset asset={asset} key={asset.isin} />;
-    });
+    return (
+      <div className="h-[90vh] mt-20 overflow-auto">
+        {selectedPortfolio.assets.sort(comparePortfolios).map((asset) => {
+          return <Asset asset={asset} key={asset.isin} />;
+        })}
+      </div>
+    );
   } else {
     return (
       <p className="w-fit mx-auto mt-[40vh] text-black">
