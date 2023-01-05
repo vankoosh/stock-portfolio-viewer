@@ -1,10 +1,8 @@
-import Portfolio from "../Portfolio/Portfolio";
+import Portfolio from "./Portfolio";
 import { useState } from "react";
 
 export default function Portfolios({ selectedUser, setSelectedPortfolio }) {
   const [activePortfolio, setActivePortfolio] = useState();
-
-  
 
   if (selectedUser) {
     return selectedUser.portfolios.map((portfolio) => {
@@ -20,7 +18,7 @@ export default function Portfolios({ selectedUser, setSelectedPortfolio }) {
     });
   } else {
     return (
-      <h1 className="w-full text-center h-auto mt-[40vh]">
+      <h1 className="w-full text-center h-auto mt-[40vh] text-black">
         Please select a user first...
       </h1>
     );

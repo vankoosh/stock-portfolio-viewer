@@ -1,15 +1,19 @@
 export default function Portfolio({ portfolio, setSelectedPortfolio, activePortfolio, setActivePortfolio }) {
+
+  const portfolioStyle =
+    "p-2 py-4 rounded-lg text-white hover:cursor-pointer w-[20vw] mx-auto px-8 my-4 hover:bg-green-800";
+
   return (
     <div
       id={portfolio.portfolioId}
       className={
-        activePortfolio && activePortfolio === portfolio.portfolioId
-        ?"p-2 py-4 bg-green-800 rounded-lg text-white hover:cursor-pointer w-[20vw] mx-auto px-8 my-4 hover:bg-green-800"
-        :"p-2 py-4 bg-[#014885] rounded-lg text-white hover:cursor-pointer w-[20vw] mx-auto px-8 my-4 hover:bg-green-800"
+        activePortfolio === portfolio.portfolioId
+          ? `${portfolioStyle} bg-green-800 `
+          : `${portfolioStyle} bg-[#014885] `
       }
       onClick={(e) => {
         setSelectedPortfolio(portfolio);
-        setActivePortfolio(e.currentTarget.id)
+        setActivePortfolio(e.currentTarget.id);
       }}
     >
       <h2>

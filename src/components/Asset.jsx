@@ -1,6 +1,6 @@
 export default function Asset({ asset }) {
   return (
-    <div className="p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 text-white mx-auto">
+    <div className="p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 mx-auto">
       <p className="text-xl ">
         Asset Name:
         <span className="ml-4 text-black text-xl"> {asset.assetName}</span>

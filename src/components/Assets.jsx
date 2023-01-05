@@ -1,7 +1,9 @@
-import Asset from "../Asset/Asset";
+import Asset from "./Asset";
 
-export default function Assets({ selectedPortfolio, selectedRadioBtn_Portfolio }) {
-  
+export default function Assets({
+  selectedPortfolio,
+  selectedRadioBtn_Portfolio,
+}) {
   function comparePortfolios(p1, p2) {
     switch (selectedRadioBtn_Portfolio) {
       case "name":
@@ -32,11 +34,14 @@ export default function Assets({ selectedPortfolio, selectedRadioBtn_Portfolio }
   }
 
   if (selectedPortfolio) {
-    return (selectedPortfolio.assets.sort(comparePortfolios).map((asset) => {
+    return selectedPortfolio.assets.sort(comparePortfolios).map((asset) => {
       return <Asset asset={asset} key={asset.isin} />;
-    }))
+    });
   } else {
-    return <p className="w-fit mx-auto mt-[40vh]">...then select a portfolio.</p>;
+    return (
+      <p className="w-fit mx-auto mt-[40vh] text-black">
+        ...then select a portfolio.
+      </p>
+    );
   }
 }
-

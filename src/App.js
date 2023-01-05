@@ -1,9 +1,9 @@
-import './App.css';
-import { useState } from "react";
-import User from "./components/User/User";
-import Portfolios from "./components/Portfolios/Portfolios";
-import Assets from "./components/Assets/Assets";
+import "./App.css";
 import userListJson from "./data.json";
+import { useState } from "react";
+import User from "./components/User";
+import Portfolios from "./components/Portfolios";
+import Assets from "./components/Assets";
 
 function App() {
   const aggregatedArray = aggregatedArr(
@@ -91,7 +91,7 @@ function App() {
       <main className="h-screen w-[33vw]">
         <form
           action="/"
-          className="fixed top-0 bg-[#caced3] w-auto left-[5vw] mx-auto h-8"
+          className="fixed top-0 bg-[#caced3] w-auto left-[5vw] mx-auto h-8 text-black"
         >
           <input
             type="radio"
@@ -148,7 +148,7 @@ function App() {
           />
           &nbsp;Capital Gain
         </form>
-        <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[33vw] ">
+        <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[33vw] text-black">
           CUSTOMERS:
         </h1>
         <div className="flex-col h-[90vh] mt-20 overflow-auto">
@@ -167,7 +167,9 @@ function App() {
       </main>
 
       <aside className="h-screen pt-10 w-[33vw]">
-        <h1 className="text-2xl text-center">CUSTOMER PORTFOLIOS:</h1>
+        <h1 className="text-2xl text-center text-black">
+          CUSTOMER PORTFOLIOS:
+        </h1>
         <div className="h-[50vh] mt-20">
           <Portfolios
             selectedUser={selectedUser}
@@ -176,7 +178,10 @@ function App() {
         </div>
       </aside>
       <aside className="h-screen w-[33vw]">
-        <form action="/" className="fixed top-0 bg-[#caced3] w-auto h-12">
+        <form
+          action="/"
+          className="fixed top-0 bg-[#caced3] w-auto h-12 text-black"
+        >
           <input
             type="radio"
             name="sort"
@@ -258,7 +263,7 @@ function App() {
           />
           &nbsp;Ass. Risk
         </form>
-        <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[30vw] ">
+        <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[30vw] text-black">
           CUSTOMER ASSETS:
         </h1>
         <div className="h-[90vh] mt-20 overflow-auto">
