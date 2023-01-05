@@ -1,6 +1,7 @@
 import Asset from "../Asset/Asset";
 
 export default function Assets({ selectedPortfolio, selectedRadioBtn_Portfolio }) {
+  
   function comparePortfolios(p1, p2) {
     switch (selectedRadioBtn_Portfolio) {
       case "name":
@@ -38,3 +39,4 @@ export default function Assets({ selectedPortfolio, selectedRadioBtn_Portfolio }
     return <p className="w-fit mx-auto mt-[40vh]">...then select a portfolio.</p>;
   }
 }
+
