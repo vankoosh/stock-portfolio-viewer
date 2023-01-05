@@ -1,6 +1,6 @@
 import Asset from "../Asset/Asset";
 
-export default function Assets({ props, selectedRadioBtn_Portfolio }) {
+export default function Assets({ selectedPortfolio, selectedRadioBtn_Portfolio }) {
   function comparePortfolios(p1, p2) {
     switch (selectedRadioBtn_Portfolio) {
       case "name":
@@ -30,9 +30,9 @@ export default function Assets({ props, selectedRadioBtn_Portfolio }) {
     }
   }
 
-  if (props) {
-    return (props.assets.sort(comparePortfolios).map((asset) => {
-      return <Asset props={asset} key={asset.isin} />;
+  if (selectedPortfolio) {
+    return (selectedPortfolio.assets.sort(comparePortfolios).map((asset) => {
+      return <Asset asset={asset} key={asset.isin} />;
     }))
   } else {
     return <p className="w-fit mx-auto mt-[40vh]">...then select a portfolio.</p>;

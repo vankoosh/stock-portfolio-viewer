@@ -1,29 +1,29 @@
-export default function User({ props, setSelectedUser, setActiveUser, activeUser }) {
+export default function User({ user, setSelectedUser, setActiveUser, activeUser }) {
 
   return (
     <div
-      id={props.clientId}
+      id={user.clientId}
       className={
-        activeUser && activeUser === props.clientId
+        activeUser && activeUser === user.clientId
           ? "p-2 py-4 rounded-lg w-[20vw] bg-green-800 hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
           : "p-2 py-4 rounded-lg w-[20vw] bg-[#014885] hover:cursor-pointer mx-auto px-8 my-4 hover:bg-green-800"
       }
       onClick={(e) => {
-        setSelectedUser(props);
+        setSelectedUser(user);
         setActiveUser(e.currentTarget.id)
       }}
     >
       <h1 className="text-2xl">
-        {props.firstName} {props.lastName}
+        {user.firstName} {user.lastName}
       </h1>
       <p className="text-white">
-        Risk Profile: <span className="ml-4">{props.riskProfile}</span>
+        Risk Profile: <span className="ml-4">{user.riskProfile}</span>
       </p>
       <p className="text-white">
-        Net Worth: <span className="ml-4">{props.aggNetWorth}</span>
+        Net Worth: <span className="ml-4">{user.aggNetWorth}</span>
       </p>
 
-      {props.portfolios.map((portfolio) => {
+      {user.portfolios.map((portfolio) => {
         return (
           <p className="text-white" key={portfolio.portfolioId + " portNames"}>
             Portfolio Name:
@@ -36,16 +36,16 @@ export default function User({ props, setSelectedUser, setActiveUser, activeUser
         Restriction Status:
         <span
           className={
-            props.aggRestrictionStatus === "breached"
+            user.aggRestrictionStatus === "breached"
               ? "ml-4 text-red-900"
               : "ml-4 text-white"
           }
         >
-          {props.aggRestrictionStatus}
+          {user.aggRestrictionStatus}
         </span>
       </p>
       <p className="text-white">
-        Aggregated Cap. Gain:<span className="ml-4">{props.aggCapGain}</span>
+        Aggregated Cap. Gain:<span className="ml-4">{user.aggCapGain}</span>
       </p>
     </div>
   );

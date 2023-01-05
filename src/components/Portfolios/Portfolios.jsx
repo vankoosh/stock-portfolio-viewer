@@ -1,14 +1,16 @@
 import Portfolio from "../Portfolio/Portfolio";
 import { useState } from "react";
 
-export default function Portfolios({ props, setSelectedPortfolio }) {
+export default function Portfolios({ selectedUser, setSelectedPortfolio }) {
   const [activePortfolio, setActivePortfolio] = useState();
 
-  if (props) {
-    return props.portfolios.map((portfolio) => {
+  
+
+  if (selectedUser) {
+    return selectedUser.portfolios.map((portfolio) => {
       return (
         <Portfolio
-          props={portfolio}
+          portfolio={portfolio}
           key={portfolio.portfolioId}
           setSelectedPortfolio={setSelectedPortfolio}
           setActivePortfolio={setActivePortfolio}

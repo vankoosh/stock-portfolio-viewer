@@ -1,36 +1,36 @@
-export default function Asset({ props }) {
+export default function Asset({ asset }) {
   return (
-    <div className="asset p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 text-white mx-auto">
+    <div className="p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 text-white mx-auto">
       <p className="text-xl ">
         Asset Name:
-        <span className="ml-4 text-black text-xl"> {props.assetName}</span>
+        <span className="ml-4 text-black text-xl"> {asset.assetName}</span>
       </p>
       <p>
-        Asset Type: <span className="ml-4">{props.assetType}</span>
+        Asset Type: <span className="ml-4">{asset.assetType}</span>
       </p>
       <p>
-        Asset Location: <span className="ml-4">{props.location}</span>
+        Asset Location: <span className="ml-4">{asset.location}</span>
       </p>
       <p>
-        Asset Quantity: <span className="ml-4">{props.quantity}</span>
+        Asset Quantity: <span className="ml-4">{asset.quantity}</span>
       </p>
       <p>
         Total Value:
         <span className="ml-4">
-          {props.quantity * props.valuePerAsset +
-            props.quantity * props.capitalGainPerAsset}
+          {asset.quantity * asset.valuePerAsset +
+            asset.quantity * asset.capitalGainPerAsset}
         </span>
       </p>
       <p>
         Capital Gain:
         <span className="ml-4">
-          {props.quantity * props.capitalGainPerAsset}
+          {asset.quantity * asset.capitalGainPerAsset}
         </span>
       </p>
       <p>
         Associated Risk:
         <span className="ml-4">
-          {props.quantity * props.associatedRiskPerAsset}
+          {asset.quantity * asset.associatedRiskPerAsset}
         </span>
       </p>
     </div>
