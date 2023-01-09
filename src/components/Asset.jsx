@@ -1,3 +1,4 @@
+
 export default function Asset({ asset }) {
   return (
     <div className="p-2 py-4 bg-green-800 rounded-lg w-[25vw] px-8 my-4 mx-auto">
