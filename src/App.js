@@ -4,6 +4,8 @@ import { useState } from "react";
 import User from "./components/User";
 import Portfolios from "./components/Portfolios";
 import Assets from "./components/Assets";
+import UserFilter from "./components/UserFilter";
+import AssetFilter from "./components/AssetFilter";
 
 function App() {
   const aggregatedArray = aggregatedArr(
@@ -18,7 +20,6 @@ function App() {
   const [activeUser, setActiveUser] = useState();
 
   function aggregatedArr(arr) {
-    
     //STEP 1 - aggregate restriction statuses
     const arrWithRestriction = arr.map((user) => {
       if (
@@ -44,7 +45,7 @@ function App() {
 
       user.portfolios.map((portfolio) => {
         return portfolio.assets.map((asset) => {
-          return tempNetWorth += asset.quantity * asset.valuePerAsset;
+          return (tempNetWorth += asset.quantity * asset.valuePerAsset);
         });
       });
       return {
@@ -59,7 +60,8 @@ function App() {
         let tempCapGain = 0;
         user.portfolios.map((portfolio) => {
           return portfolio.assets.map((asset) => {
-            return tempCapGain += asset.quantity * (asset.capitalGainPerAsset * 1);
+            return (tempCapGain +=
+              asset.quantity * (asset.capitalGainPerAsset * 1));
           });
         });
         return {
@@ -68,7 +70,7 @@ function App() {
         };
       }
     );
-    
+      console.log("aggregation ran")
     return arrWithRestrictionWorthAndGain;
   }
 
@@ -92,65 +94,10 @@ function App() {
   return (
     <div className="flex justify-between font-oswald w-screen h-screen">
       <main className="h-screen w-[33vw]">
-        <form
-          action="/"
-          className="fixed top-0 bg-[#caced3] w-auto left-[5vw] mx-auto h-8 text-black"
-        >
-          <input
-            type="radio"
-            name="sort"
-            value="name"
-            checked={selectedRadioBtn_User === "name" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_User(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Name
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="risk"
-            checked={selectedRadioBtn_User === "risk" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_User(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Risk Profile
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="worth"
-            checked={selectedRadioBtn_User === "worth" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_User(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Net Worth
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="restriction"
-            checked={selectedRadioBtn_User === "restriction" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_User(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Restriction Status
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="gain"
-            checked={selectedRadioBtn_User === "gain" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_User(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Capital Gain
-        </form>
+        <UserFilter
+          selectedRadioBtn_User={selectedRadioBtn_User}
+          setSelectedRadioBtn_User={setSelectedRadioBtn_User}
+        />
         <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[33vw] text-black">
           CUSTOMERS:
         </h1>
@@ -169,109 +116,28 @@ function App() {
         </div>
       </main>
 
-      <aside className="h-screen pt-10 w-[33vw]">
+      <aside className="relative h-screen pt-10 w-[33vw]">
         <h1 className="text-2xl text-center text-black">
           CUSTOMER PORTFOLIOS:
-        </h1>        
-          <Portfolios
-            selectedUser={selectedUser}
-            setSelectedPortfolio={setSelectedPortfolio}
-          />       
+        </h1>
+        <Portfolios
+          selectedUser={selectedUser}
+          setSelectedPortfolio={setSelectedPortfolio}
+        />
       </aside>
 
-      <aside className="h-screen w-[33vw]">
-        <form
-          action="/"
-          className="fixed top-0 bg-[#caced3] w-auto h-12 text-black"
-        >
-          <input
-            type="radio"
-            name="sort"
-            value="name"
-            checked={selectedRadioBtn_Portfolio === "name" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Name
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="type"
-            checked={selectedRadioBtn_Portfolio === "type" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Portfolio Type
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="location"
-            checked={selectedRadioBtn_Portfolio === "location" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Location
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="quantity"
-            checked={selectedRadioBtn_Portfolio === "quantity" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Quantity
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="total value"
-            checked={
-              selectedRadioBtn_Portfolio === "total value" ? true : false
-            }
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Total Value
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="capital gain"
-            checked={
-              selectedRadioBtn_Portfolio === "capital gain" ? true : false
-            }
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Capital Gain
-          <input
-            className="ml-2"
-            type="radio"
-            name="sort"
-            value="risk"
-            checked={selectedRadioBtn_Portfolio === "risk" ? true : false}
-            onChange={(e) => {
-              setSelectedRadioBtn_Portfolio(e.currentTarget.value);
-            }}
-          />
-          &nbsp;Ass. Risk
-        </form>
+      <aside className="relative h-screen w-[33vw]">
+        <AssetFilter
+          selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
+          setSelectedRadioBtn_Portfolio={setSelectedRadioBtn_Portfolio}
+        />
         <h1 className="text-2xl text-center fixed top-10 bg-[#caced3] w-[30vw] text-black">
           CUSTOMER ASSETS:
         </h1>
-          <Assets
-            selectedPortfolio={selectedPortfolio}
-            selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
-          />
+        <Assets
+          selectedPortfolio={selectedPortfolio}
+          selectedRadioBtn_Portfolio={selectedRadioBtn_Portfolio}
+        />
       </aside>
     </div>
   );

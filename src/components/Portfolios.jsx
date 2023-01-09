@@ -22,7 +22,7 @@ export default function Portfolios({ selectedUser, setSelectedPortfolio }) {
     );
   } else {
     return (
-      <h1 className="w-full text-center h-auto mt-[40vh] text-black">
+      <h1 className="absolute w-full text-center h-auto top-[50vh] text-black">
         Please select a user first...
       </h1>
     );

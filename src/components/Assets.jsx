@@ -4,7 +4,9 @@ export default function Assets({
   selectedPortfolio,
   selectedRadioBtn_Portfolio,
 }) {
+  
   function comparePortfolios(p1, p2) {
+
     switch (selectedRadioBtn_Portfolio) {
       case "name":
         return p1.assetName > p2.assetName ? 1 : -1;
@@ -43,9 +45,9 @@ export default function Assets({
     );
   } else {
     return (
-      <p className="w-fit mx-auto mt-[40vh] text-black">
+      <h1 className="absolute w-full text-center h-auto top-[50vh] text-black">
         ...then select a portfolio.
-      </p>
+      </h1>
     );
   }
 }
