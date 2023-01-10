@@ -3,7 +3,6 @@ export default function Portfolio({ portfolio, setSelectedPortfolio, activePortf
 
   const portfolioStyle =
     "p-2 py-4 rounded-lg text-white hover:cursor-pointer w-[20vw] mx-auto px-8 my-4 hover:bg-green-800";
-
   return (
     <div
       className={
