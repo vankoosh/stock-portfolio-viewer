@@ -1,5 +1,11 @@
+import {memo} from "react"
 
-export default function UserFilter({ selectedRadioBtn_User, setSelectedRadioBtn_User }) {
+
+const UserFilter = memo(({
+  selectedRadioBtn_User,
+  setSelectedRadioBtn_User,
+}) =>{
+  console.log("user filter rendered");
   return (
     <form
       action="/"
@@ -61,4 +67,6 @@ export default function UserFilter({ selectedRadioBtn_User, setSelectedRadioBtn_
       &nbsp;Capital Gain
     </form>
   );
-}
+})
+
+export default UserFilter
