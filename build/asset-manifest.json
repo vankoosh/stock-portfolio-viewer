@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sq-mario-nano/static/css/main.46df96e7.css",
+    "main.js": "/sq-mario-nano/static/js/main.12121825.js",
+    "index.html": "/sq-mario-nano/index.html",
+    "main.46df96e7.css.map": "/sq-mario-nano/static/css/main.46df96e7.css.map",
+    "main.12121825.js.map": "/sq-mario-nano/static/js/main.12121825.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46df96e7.css",
+    "static/js/main.12121825.js"
+  ]
+}
